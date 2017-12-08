@@ -64,13 +64,19 @@ class SocialNetwork:
         for friend in self.users[user]:
             i = 0
             j = 0
+            if i < len(self.users[user]):
+                c = 0
+                if self.users[user[i]] == self.users[friend[j]]:
+                    c += 1
+                j += 1
+            i += 1
+            jac = c / len(self.users[user])
+        return jac
 
 
     def suggest_friend(self, user):
         '''Suggest a friend to the user
-
         See project specifications for details on this algorithm.
-
         Arguments:
             user (str): The username of the user to find a friend for
 
@@ -78,9 +84,7 @@ class SocialNetwork:
             str: The username of a new candidate friend for the user
         '''
         pass # FIXME
-        #using the Jaccard index
-        #measure the "distance" between two collections of things
-        #divides the number of things in common by the total number of things
+
 
 
     def to_dot(self):
