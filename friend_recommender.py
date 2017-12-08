@@ -14,12 +14,7 @@ class SocialNetwork:
         Returns:
             [str]: A list of usernames
         '''
-        #pass # FIXME
-        users = []
-        for friend in SocialNetwork:
-            if friend not in users:
-                users.append(friend)
-        return users
+        return self.users.keys()
 
     def add_user(self, user):
         '''Add a user to the network
@@ -32,7 +27,7 @@ class SocialNetwork:
         Returns:
             None
         '''
-        pass # FIXME
+        self.users[user] = []
 
     def add_friend(self, user, friend):
         '''Adds a friend to a user
@@ -50,7 +45,7 @@ class SocialNetwork:
         Returns:
             None
         '''
-        pass # FIXME
+        self.users[user].append(friend)
 
     def get_friends(self, user):
         '''Get the friends of a user
@@ -62,7 +57,14 @@ class SocialNetwork:
             [str]: The list of usernames of the user's friends
 
         '''
-        pass # FIXME
+        friends = self.users[user]
+        return friends
+
+    def jaccard_index(self, user):
+        for friend in self.users[user]:
+            i = 0
+            j = 0
+
 
     def suggest_friend(self, user):
         '''Suggest a friend to the user
@@ -76,6 +78,10 @@ class SocialNetwork:
             str: The username of a new candidate friend for the user
         '''
         pass # FIXME
+        #using the Jaccard index
+        #measure the "distance" between two collections of things
+        #divides the number of things in common by the total number of things
+
 
     def to_dot(self):
         result = []
