@@ -64,7 +64,7 @@ class SocialNetwork:
         for friend in self.users[user]:
             i = 0
             j = 0
-        
+
 
     def suggest_friend(self, user):
         '''Suggest a friend to the user
