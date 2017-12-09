@@ -61,18 +61,25 @@ class SocialNetwork:
         return friends
 
     def jaccard_index(self, user):
+        #for friend in self.users[user]:
+        #    i = 0
+        #    j = 0
+        #    if i < len(self.users[user]):
+        #        c = 0
+        #        if self.users[user[i]] == self.users[friend[j]]:
+        #            c += 1
+        #        j += 1
+        #    i += 1
+        #    jac = c / len(self.users[user])
+        #return jac
         for friend in self.users[user]:
             i = 0
             j = 0
-            if i < len(self.users[user]):
-                c = 0
-                if self.users[user[i]] == self.users[friend[j]]:
-                    c += 1
-                j += 1
-            i += 1
-            jac = c / len(self.users[user])
-        return jac
-
+            v = 0
+            AllFriends = []
+            if i <len(self.users[user]):
+                if friend not in AllFriends:
+                    AllFriends.append(friend)
 
     def suggest_friend(self, user):
         '''Suggest a friend to the user
@@ -84,6 +91,8 @@ class SocialNetwork:
             str: The username of a new candidate friend for the user
         '''
         pass # FIXME
+        JaccardIndexes = {}
+        for jac in self.users:
 
 
 
