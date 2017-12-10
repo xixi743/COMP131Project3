@@ -134,12 +134,13 @@ class SocialNetwork:
         #making sure the answer isn't the user AKA jesse -> jesse
             #the most similar user is the user itself, but that's not helpful...
         if username in most_common_friends_list:
-            most_common_friends.remove(username)
+            most_common_friends_list.remove(username)
 
-        for h in range(len(most_common_friends_list)):
+        for h in range(len(most_common_friends)):
             if not h in user_friends:
                 if not most_common_friends[h] == username:
-                    most_common_friends_list.append(most_common_friends)
+                    most_common_friends_list.append(most_common_friends[h])
+
 
         #removing people who they're already friends with
         removing_friends = set(most_common_friends_list) - set_friends
@@ -149,16 +150,18 @@ class SocialNetwork:
 
         a = 0
         most_friends = 0
-        new_bff = ""
+        new_bff = ";lkj;lkj"
         values = self.users.values()  # values = usernames of the people they're following
-        while a < len(list(removing_friends)):
+        removing_friends_list = list(removing_friends)
+
+        while a < len(removing_friends_list):
             amount_friends = 0
-            for bleh in values:
+            for blah in values:
                 if amount_friends > most_friends:
-                    amount_friends = most_friends
-                    new_bff = str(list(removing_friends[a]))
-                if list(removing_friends[a]) in bleh:
-                    most_friends += 1
+                    most_friends = amount_friends
+                    new_bff = str(removing_friends_list[a])
+                if removing_friends_list[a] in blah:
+                    amount_friends += 1
             a += 1
         return new_bff
 
@@ -229,9 +232,9 @@ def create_network_from_file(filename):
     return network
 
 def main():
-    network = create_network_from_file('simple.network')
+    network = create_network_from_file('twitter.network')
     print(network.to_dot())
-    print(network.suggest_friend('bailey'))
+    print(network.suggest_friend('justinnhli'))
 
 if __name__ == '__main__':
     main()
